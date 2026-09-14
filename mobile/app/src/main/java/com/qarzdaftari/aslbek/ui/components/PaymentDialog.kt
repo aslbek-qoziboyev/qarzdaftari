@@ -9,6 +9,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.qarzdaftari.aslbek.data.model.Debt
+import com.qarzdaftari.aslbek.util.formatMoney
 
 @Composable
 fun PaymentDialog(
@@ -100,8 +101,4 @@ fun PaymentDialog(
             }
         }
     )
-}
-
-fun formatMoney(value: Double): String {
-    return String.format("%,.0f", value).replace(",", " ") + " so'm"
 }

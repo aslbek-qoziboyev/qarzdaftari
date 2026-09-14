@@ -4,6 +4,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
 import com.qarzdaftari.aslbek.data.model.Debt
+import com.qarzdaftari.aslbek.util.formatMoney
 
 @Composable
 fun DeleteConfirmDialog(

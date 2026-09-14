@@ -1,15 +1,16 @@
 package com.qarzdaftari.aslbek.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -26,7 +27,7 @@ import com.qarzdaftari.aslbek.data.model.User
 import com.qarzdaftari.aslbek.ui.components.AddDebtDialog
 import com.qarzdaftari.aslbek.ui.components.DeleteConfirmDialog
 import com.qarzdaftari.aslbek.ui.components.PaymentDialog
-import com.qarzdaftari.aslbek.ui.components.formatMoney
+import com.qarzdaftari.aslbek.util.formatMoney
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,12 +69,8 @@ fun HomeScreen(
     }
 
     // Calculations for summary stats
-    val totalGiven = debts.filter { it.direction == "given" }.sumOf { it.amount }
     val totalGivenRemaining = debts.filter { it.direction == "given" }.sumOf { it.remaining }
-
-    val totalReceived = debts.filter { it.direction == "received" }.sumOf { it.amount }
     val totalReceivedRemaining = debts.filter { it.direction == "received" }.sumOf { it.remaining }
-
     val netBalance = totalGivenRemaining - totalReceivedRemaining
 
     Scaffold(
@@ -94,11 +91,11 @@ fun HomeScreen(
                     }
                 },
                 actions = {
-                    IconButton(onClick = onLogout) {
-                        Icon(
-                            imageVector = Icons.Default.ExitToApp,
-                            contentDescription = "Chiqish",
-                            tint = MaterialTheme.colorScheme.error
+                    TextButton(onClick = onLogout) {
+                        Text(
+                            text = "Chiqish",
+                            color = MaterialTheme.colorScheme.error,
+                            fontWeight = FontWeight.SemiBold
                         )
                     }
                 },
@@ -160,7 +157,9 @@ fun HomeScreen(
             item {
                 // Filter Chips
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .horizontalScroll(rememberScrollState()),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     FilterChip(
@@ -458,7 +457,7 @@ fun DebtCard(
             }
 
             Spacer(Modifier.height(12.dp))
-            Divider()
+            HorizontalDivider()
             Spacer(Modifier.height(10.dp))
 
             // Amounts Row

@@ -231,7 +231,7 @@ fun AuthScreen(
                     )
                 }
 
-                Divider(modifier = Modifier.padding(vertical = 4.dp))
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
 
                 // Quick Guest Access
                 OutlinedButton(

@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.qarzdaftari.aslbek"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.qarzdaftari.aslbek"

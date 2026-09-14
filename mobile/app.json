@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "Qarz Daftari",
+    "slug": "qarzdaftari",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "qarzdaftari",
+    "userInterfaceStyle": "automatic",
+    "android": {
+      "package": "com.qarzdaftari.aslbek"
+    }
+  }
+}

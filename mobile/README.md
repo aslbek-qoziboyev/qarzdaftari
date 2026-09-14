@@ -1,37 +1,13 @@
 # Qarz Daftari Mobile
 
-React Native + Expo mobile client for Qarz Daftari.
+Native Android application built with Kotlin + Jetpack Compose.
 
-## Package
-com.qarzdaftari.aslbek
+Package: com.qarzdaftari.aslbek
 
-## Authentication
-Google OAuth through Supabase Auth. The app uses the custom callback scheme:
+Backend: Supabase Auth + Postgres.
+Authentication: Google OAuth through Supabase.
+Callback: qarzdaftari://auth/callback
 
-qarzdaftari://auth/callback
+Open the mobile folder in Android Studio as a Gradle project.
 
-## Database
-The mobile app uses the existing public.debts table and its RLS policies from ../supabase/schema.sql.
-
-## Local setup
-
-1. Install Node.js LTS and Android Studio.
-2. From this directory run:
-   npm install
-3. Copy .env.example to .env and fill in the Supabase project URL and anon/publishable key.
-4. Start:
-   npm start
-5. Press "a" in the Expo terminal to open Android.
-
-## Google/Supabase setup
-
-Google provider must be enabled in Supabase Authentication > Providers > Google.
-
-For the Android OAuth client use:
-- Package: com.qarzdaftari.aslbek
-- SHA-1: the fingerprint of the Android debug/release signing certificate.
-
-In Supabase Authentication > URL Configuration add:
-qarzdaftari://auth/callback
-
-Do not put the Supabase project URL in the app's visible login/callback UI. The user-facing action is "Qarz Daftariga kirish".
+Before running, replace SUPABASE_KEY in app/build.gradle.kts with the Supabase publishable/anon key. Never put a service_role or secret key in the app.
